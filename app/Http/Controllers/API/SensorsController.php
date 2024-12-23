@@ -34,7 +34,7 @@ class SensorsController extends Controller
             'pm2_5'             => $request->input('pm2_5'),
             'pm10'              => $request->input('pm10'),
             'pm1_0'             => $request->input('pm1_0'),
-            'soil_nitorogen'    => $request->input('soil_nitorogen'),
+            'soil_nitrogen'    => $request->input('soil_nitrogen'),
             'soil_phosporus'    => $request->input('soil_phosporus'),
             'soil_kalium'       => $request->input('soil_kalium'),
         ]);
