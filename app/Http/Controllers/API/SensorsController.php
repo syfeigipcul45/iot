@@ -51,4 +51,14 @@ class SensorsController extends Controller
             ], 401);
         }
     }
+
+    public function getSensors()
+    {
+        $sensors = Sensor::latest()->first();
+        return response([
+            'success' => true,
+            'message' => 'List Data Sensor',
+            'data' => $sensors
+        ], 200);
+    }
 }

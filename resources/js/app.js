@@ -18,7 +18,7 @@ const app = createApp({});
 import ExampleComponent from './components/ExampleComponent.vue';
 import DashboardSensorComponent from './components/DashboardSensorComponent.vue';
 app.component('example-component', ExampleComponent);
-app.component('dashboard-sensor-component', require(DashboardSensorComponent).default);
+app.component('dashboard-sensor-component', DashboardSensorComponent);
 
 /**
  * The following block of code may be used to automatically register your
