@@ -12,4 +12,5 @@ Route::get('/user', function (Request $request) {
 Route::get('/sensor', [SensorsController::class, 'index'])->name('index');
 Route::post('/sensor/post', [SensorsController::class, 'sensor'])->name('sensor');
 Route::get('/getSensors', [SensorsController::class, 'getSensors'])->name('data-sensor');
+Route::get('/getAllSensors', [SensorsController::class, 'getAllSensors'])->name('data-semua-sensor');
 

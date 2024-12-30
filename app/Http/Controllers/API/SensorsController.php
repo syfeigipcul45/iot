@@ -61,4 +61,14 @@ class SensorsController extends Controller
             'data' => $sensors
         ], 200);
     }
+
+    public function getAllSensors()
+    {
+        $sensors = Sensor::all();
+        return response([
+            'success' => true,
+            'message' => 'List Data Sensor',
+            'data' => $sensors
+        ], 200);
+    }
 }
