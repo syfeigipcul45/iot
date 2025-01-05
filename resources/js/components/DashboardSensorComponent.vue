@@ -380,7 +380,7 @@ export default {
         },
         cuacaImg() {
             if ((this.sensorData.lux >= 0 && this.sensorData.lux <= 10) && (this.sensorData.rain_hour == 0.0)) {
-                return "_homepage/icon/malam.png";
+                return "_homepage/icon/malam_hujan.png";
             } else if ((this.sensorData.lux >= 0 && this.sensorData.lux <= 10) && (this.sensorData.rain_hour == 0.1 && this.sensorData.rain_hour >= 100)) {
                 return "_homepage/icon/malam_hujan.png";
             } else if ((this.sensorData.lux >= 11 && this.sensorData.lux <= 50) && (this.sensorData.rain_hour == 0.0)) {
