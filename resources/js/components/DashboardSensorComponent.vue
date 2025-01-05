@@ -43,7 +43,7 @@
                                                 <span>{{ dateCuaca }}</span>
                                                 <div class="col-4 text-start">
                                                     <!-- <div class="icon icon-shape text-center border-radius-2xl"> -->
-                                                    <img :src="cuacaImg" height="100%" width="120%">
+                                                    <img :src="cuacaImg" height="100%" width="100%">
                                                     <!-- </div> -->
                                                     <!-- <div>
                                                 <span class="text-black text-3xl">{{ sensorData.temperature }} °C</span>
@@ -381,6 +381,8 @@ export default {
         cuacaImg() {
             if ((this.sensorData.lux >= 0 && this.sensorData.lux <= 10) && (this.sensorData.rain_hour == 0.0)) {
                 return "_homepage/icon/malam.png";
+            } else if ((this.sensorData.lux >= 0 && this.sensorData.lux <= 10) && (this.sensorData.rain_hour == 0.1 && this.sensorData.rain_hour >= 100)) {
+                return "_homepage/icon/malam_hujan.png";
             } else if ((this.sensorData.lux >= 11 && this.sensorData.lux <= 50) && (this.sensorData.rain_hour == 0.0)) {
                 return "_homepage/icon/sunset.png";
             } else if ((this.sensorData.lux >= 51 && this.sensorData.lux <= 400) && (this.sensorData.rain_hour == 0.0)) {
@@ -465,7 +467,7 @@ export default {
     methods: {
         fetchData() {
             axios
-                .get('api/getSensors')
+                .get('https://iot.gipculstudio.id/api/getSensors')
                 .then(response => {
                     if (response.data.success) {
                         this.sensorData = response.data.data;
