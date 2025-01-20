@@ -25,6 +25,11 @@ class RoleResource extends Resource
     protected static ?int $navigationSort = 2;
     protected static ?string $navigationGroup = 'Settings';
 
+    public static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->hasRole('Admin');
+    }
+    
     public static function form(Form $form): Form
     {
         return $form
