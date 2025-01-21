@@ -14,6 +14,7 @@ Route::post('user/login',[LoginController::class,'login'])->name('user.login');
 
 Route::middleware('auth:sanctum')->prefix('user')->group(function () {
     Route::get('getSensors', [SensorsController::class, 'getSensors']);
+    Route::get('getDataByDate', [SensorsController::class, 'getDataByDate']);
 });
 
 Route::get('/sensor', [SensorsController::class, 'index'])->name('index');

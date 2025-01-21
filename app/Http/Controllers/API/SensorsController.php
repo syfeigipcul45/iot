@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Sensor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SensorsController extends Controller
 {
@@ -69,6 +70,26 @@ class SensorsController extends Controller
             'success' => true,
             'message' => 'List Data Sensor',
             'data' => $sensors
+        ], 200);
+    }
+
+    public function getDataByDate(Request $request)
+    {
+        $from = $request->input('from');
+        $until = $request->input('until');
+
+        $data = Sensor::whereBetween('created_at', [$from, $until])
+            ->selectRaw('DATE_FORMAT(created_at, "%Y-%m-%d %H:%i") as minute')
+            ->selectRaw('AVG(temperature) as average_temperature')
+            ->selectRaw('AVG(humidity) as average_humidity')
+            ->selectRaw('AVG(lux) as average_lux')
+            ->groupBy(DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d %H:%i")'))
+            ->orderBy(DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d %H:%i")'))
+            ->get();
+        return response([
+            'success' => true,
+            'message' => 'List Data Sensor',
+            'data' => $data
         ], 200);
     }
 }
